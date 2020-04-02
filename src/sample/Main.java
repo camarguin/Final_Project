@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
+
 public class Main extends Application {
 
     @Override
@@ -18,6 +20,8 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        Question question = new Question();
+        question.readQuestions("questions.txt");
         launch(args);
     }
 }
