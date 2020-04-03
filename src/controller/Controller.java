@@ -21,7 +21,7 @@ public class Controller{
     @FXML
     private static RadioButton radioButtonA4 = new RadioButton("");
     @FXML
-    private Label labelScore;
+    private Label label;
     @FXML
     public Button btnCheckAnswer;
     @FXML
@@ -76,4 +76,5 @@ public class Controller{
     private void increaseScore(){
         this.score++;
     }
+
 }
