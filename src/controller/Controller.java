@@ -6,8 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import sample.Question;
 
-public class Controller{
+public class Controller {
 
     @FXML
     public RadioButton radioButtonA1;
@@ -18,7 +19,7 @@ public class Controller{
     @FXML
     private RadioButton radioButtonA4;
     @FXML
-    private Label labelScore;
+    private Label label;
     @FXML
     public Button button;
 
@@ -28,4 +29,5 @@ public class Controller{
             System.out.println("Hello my ass");
         }
     }
+
 }

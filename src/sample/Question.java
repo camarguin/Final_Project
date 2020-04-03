@@ -1,15 +1,16 @@
 package sample;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Question {
-    private Scanner scanner;
+    private static Scanner scanner;
     private final String questionsFileName = "questions.txt";
     //private final String answersFileName = "answers.txt";
-    private final String DELIMITER = ":";
+    private static final String DELIMITER = ":";
     private String question;
     private String answer;
     ArrayList<String> wrongs;
@@ -22,12 +23,22 @@ public class Question {
         this.wrongs.add(wrong2);
         this.wrongs.add(wrong3);
     }
+    /**
+     *  CONSTRUCTOR
+     *
+     * */
     public Question() {
 
     }
 
-    // Method to read the questions from the txt file (BETA)
-    public void readQuestions(String questionsFileName) {
+    /**
+     * This method read the file with questions and get the right answer and created a arraylist with the wrongs ones
+     *
+     * input: Text questions name     (questions.txt)
+     * output: ArrayList with all questions
+     *
+     * */
+    public static ArrayList<Question> readQuestions(String questionsFileName) {
         ArrayList<Question> questions = new ArrayList<>();
         try {
             scanner = new Scanner(new File(questionsFileName));
@@ -39,12 +50,29 @@ public class Question {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        // test!
-        for (Question q : questions){
-            System.out.println(q.question);
-            System.out.println(q.answer);
-        }
-        //System.out.println(squestions.toString());
+        return questions ;
+    }
+
+
+
+    /**
+     *      TODO
+     *
+     *      WE NEED A FUNCTION THAT RETURN A RANDOM ARRAY WITH THE WRONGS ANSWERS
+     *
+     *      INPUT: NOTHING
+     *      OUTPUT: ARRAYLIST with all wrong options of answers
+     *
+     * */
+
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "question='" + question + '\'' +
+                ", answer='" + answer + '\'' +
+                ", wrongs=" + wrongs +
+                '}';
     }
 
 }
