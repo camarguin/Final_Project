@@ -12,14 +12,9 @@ import java.util.Scanner;
 public class Question {
     private static Scanner scanner;
     private static final String questionsFileName = "questions.txt";
-    //private final String answersFileName = "answers.txt";
     private static final String DELIMITER = ":";
     private String question;
     private String answer;
-
-    public String getAnswer() {
-        return answer;
-    }
 
     public ArrayList<String> getWrongs() {
         return wrongs;
@@ -65,6 +60,13 @@ public class Question {
         return questions ;
     }
 
+    public String getQuestion() {
+        return question;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
     /**
      *      TODO
      *
