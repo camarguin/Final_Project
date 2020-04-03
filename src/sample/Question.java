@@ -76,10 +76,10 @@ public class Question {
      *      OUTPUT: ARRAYLIST with all wrong options of answers
      *
      * */
-    public static ArrayList<String> getOptions(Question question) {
+    public ArrayList<String> getOptions() {
         ArrayList<String> options = new ArrayList<>();
-        options.add(question.getAnswer());
-        for (String w : question.getWrongs()) {
+        options.add(this.getAnswer());
+        for (String w : this.getWrongs()) {
             options.add(w);
         }
         return options;

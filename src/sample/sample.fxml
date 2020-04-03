@@ -8,14 +8,17 @@
       <Pane prefHeight="400.0" prefWidth="235.0" BorderPane.alignment="CENTER">
          <children>
             <fx:define>
-               <ToggleGroup fx:id="possibleAnswers"/>
+               <ToggleGroup fx:id="possibleAnswers" />
             </fx:define>
 
-            <Label fx:id="questionLabel" layoutY="26.0" text="Name one source of Canadian law."  />
-            <RadioButton fx:id="radioButtonA1" layoutY="55.0" mnemonicParsing="false"  toggleGroup="$possibleAnswers" />
-            <RadioButton fx:id="radioButtonA2" layoutY="83.0" mnemonicParsing="false"  toggleGroup="$possibleAnswers"/>
-            <RadioButton fx:id="radioButtonA3" layoutY="113.0" mnemonicParsing="false"  toggleGroup="$possibleAnswers" />
-            <RadioButton fx:id="radioButtonA4" layoutY="144.0" mnemonicParsing="false"  toggleGroup="$possibleAnswers"/>
+            <Label fx:id="questionLabel" layoutY="26.0" />
+            <RadioButton fx:id="radioButtonA1" layoutY="55.0" mnemonicParsing="false">
+               <toggleGroup>
+                  <ToggleGroup fx:id="possibleAnswers" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="radioButtonA2" layoutY="83.0" mnemonicParsing="false" toggleGroup="$possibleAnswers" />
+            <RadioButton fx:id="radioButtonA3" layoutY="113.0" mnemonicParsing="false" toggleGroup="$possibleAnswers" />
+            <RadioButton fx:id="radioButtonA4" layoutY="144.0" mnemonicParsing="false" toggleGroup="$possibleAnswers" />
             <Button fx:id="btnCheckAnswer" layoutX="66.0" layoutY="188.0" mnemonicParsing="false" onAction="#buttonClicked" text="Submit" />
          </children>
       </Pane>
