@@ -21,10 +21,12 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        Question questionT = new Question();
         ArrayList<Question> question = new ArrayList<Question>();
         question = Question.readQuestions("questions.txt");
         for (Question q : question){
             System.out.println(q.toString());
+            System.out.println(Question.getOptions(q));
         }
         launch(args);
     }
