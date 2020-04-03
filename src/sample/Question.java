@@ -74,5 +74,4 @@ public class Question {
                 ", wrongs=" + wrongs +
                 '}';
     }
-
 }
