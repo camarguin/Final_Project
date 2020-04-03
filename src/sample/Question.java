@@ -39,10 +39,12 @@ public class Question {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        // test!
         for (Question q : questions){
             System.out.println(q.question);
             System.out.println(q.answer);
         }
         //System.out.println(squestions.toString());
     }
+
 }
