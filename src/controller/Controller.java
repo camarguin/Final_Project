@@ -17,19 +17,14 @@ public class Controller implements Initializable {
     public static int score = 0;
     @FXML
     public RadioButton radioButtonA1;
-
     @FXML
     public RadioButton radioButtonA2;
-
     @FXML
     public RadioButton radioButtonA3;
-
     @FXML
     public RadioButton radioButtonA4;
-
     @FXML
     public Label questionLabel;
-
     @FXML
     public Button btnCheckAnswer;
     @FXML
@@ -39,49 +34,59 @@ public class Controller implements Initializable {
 
     public static void readQuestions(){
         questions = Question.readQuestions("questions.txt");
-
-        //setQuestions();
     }
-    public void setQuestions(){
-        /*System.out.println("SetQuestions");
-        Question myQuestion = questions.get(indexQuestion);
-        System.out.println(myQuestion.getAnswer());
-        //radioButtonA1.setText(myQuestion.getAnswer());
-        radioButtonA1 = new RadioButton(myQuestion.getAnswer());*/
-        radioButtonA2.setText("option");
-        radioButtonA3.setText("option");
-        radioButtonA4.setText("option");
+    public void updateQuestion(){
+        increaseIndexQuestion();
+        System.out.println(indexQuestion);
+        System.out.println(questions.size());
+        if (indexQuestion>questions.size()-1){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("GAME OVER");
+            alert.setHeaderText("GAME OVER");
+            alert.showAndWait();
+        }else{
+            Question myQuestion = questions.get(indexQuestion);
+            ArrayList<String> option = myQuestion.getOptions();
+            questionLabel.setText(myQuestion.getQuestion());
+            radioButtonA1.setText(option.get(0));
+            radioButtonA2.setText(option.get(1));
+            radioButtonA3.setText(option.get(2));
+            radioButtonA4.setText(option.get(3));
+        }
     }
 
 
     public void buttonClicked(ActionEvent actionEvent) {
-
-        radioButtonA1.setText("Option1 MOFO");
-        radioButtonA2.setText("Option2MOFO");
-        radioButtonA3.setText("OPTION3 MOFO");
-        radioButtonA4.setText("Option 4 MotherFucker");
         Question myQuestion = questions.get(indexQuestion);
         String correctAnswer = myQuestion.getAnswer();
+        Alert alert;
         // Get the selectedRadioButton --> possibleAnswers it's the ToggleGroup of Radio Buttons
         RadioButton selectedRadioButton = (RadioButton) possibleAnswers.getSelectedToggle();
         // Create the alert and set it
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-        if (selectedRadioButton.getText().compareTo(correctAnswer)== 0){
-            alert.setTitle("Correct Answer");
-            increaseScore();
+        if (selectedRadioButton == null){
+            alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("You must choose an answer");
         }else {
-            alert.setTitle("Wrong Answer");
+            if (selectedRadioButton.getText().compareTo(correctAnswer)== 0){
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Correct Answer");
+                increaseScore();
+            }else {
+                alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Wrong Answer");
+            }
+            alert.setHeaderText(myQuestion.getQuestion()+"\n\nCorrect answer: "+myQuestion.getAnswer());
+            /**
+             *
+             * TODO
+             * put the REASON should be in other variable of questions
+             *
+             * */
+            alert.setContentText("Reason!!!!!!");
+            alert.showAndWait();
+            updateQuestion();
         }
-        alert.setHeaderText(myQuestion.getQuestion()+"\n\nCorrect answer: "+myQuestion.getAnswer());
-        /**
-         *
-         * TODO
-         * put the REASON should be in other variable of questions
-         *
-         * */
-        alert.setContentText("Reason!!!!!!");
-        alert.showAndWait();
     }
     private void increaseIndexQuestion(){
         this.indexQuestion++;
@@ -92,12 +97,14 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Question question = new Question("Question 1", "Answer 1", "Wrong 1", "Wrong 2", "Wrong 3");
-        Question.readQuestions("questions.txt");
-        radioButtonA1.setText(question.getOptions().get(0));
-        radioButtonA2.setText(question.getOptions().get(1));
-        radioButtonA3.setText(question.getOptions().get(2));
-        radioButtonA4.setText(question.getOptions().get(3));
+        readQuestions();
+        Question myQuestion = questions.get(indexQuestion);
+        ArrayList<String> option = myQuestion.getOptions();
+        questionLabel.setText(myQuestion.getQuestion());
+        radioButtonA1.setText(option.get(0));
+        radioButtonA2.setText(option.get(1));
+        radioButtonA3.setText(option.get(2));
+        radioButtonA4.setText(option.get(3));
 
     }
 }
