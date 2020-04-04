@@ -12,7 +12,7 @@
             <RadioButton fx:id="radioButtonA3" layoutY="113.0" mnemonicParsing="false" text="The military code of France" />
             <RadioButton fx:id="radioButtonA4" layoutY="144.0" mnemonicParsing="false" text="English common law" />
             <Label fx:id="questionLabel" layoutY="26.0" text="" />
-            <Button fx:id="button" layoutX="66.0" layoutY="188.0" mnemonicParsing="false" onAction="#buttonClicked" text="Button" />
+            <Button fx:id="button" layoutX="66.0" layoutY="188.0" mnemonicParsing="false" text="Button" />
          </children>
       </Pane>
    </left>
