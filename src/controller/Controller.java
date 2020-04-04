@@ -1,87 +1,117 @@
 package controller;
 
 
+import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import sample.Question;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Controller implements Initializable {
     private static int indexQuestion = 0;
     public static ArrayList<Question> questions = new ArrayList<Question>();
     public static int score = 0;
     @FXML
+    public BorderPane borderPane;
+    @FXML
     public RadioButton radioButtonA1;
-
     @FXML
     public RadioButton radioButtonA2;
-
     @FXML
     public RadioButton radioButtonA3;
-
     @FXML
     public RadioButton radioButtonA4;
-
     @FXML
     public Label questionLabel;
-
     @FXML
     public Button btnCheckAnswer;
     @FXML
     public ToggleGroup possibleAnswers;
 
+    public static Boolean isSplashLoaded = false;
+
 
 
     public static void readQuestions(){
         questions = Question.readQuestions("questions.txt");
-
-        //setQuestions();
-    }
-    public void setQuestions(){
-        /*System.out.println("SetQuestions");
-        Question myQuestion = questions.get(indexQuestion);
-        System.out.println(myQuestion.getAnswer());
-        //radioButtonA1.setText(myQuestion.getAnswer());
-        radioButtonA1 = new RadioButton(myQuestion.getAnswer());*/
-        radioButtonA2.setText("option");
-        radioButtonA3.setText("option");
-        radioButtonA4.setText("option");
     }
 
+    /**
+     * This method updates the radioButtons with the options
+     */
+    public void updateQuestion(){
+        increaseIndexQuestion();
+        System.out.println(indexQuestion);
+        System.out.println(questions.size());
+        if (indexQuestion>questions.size()-1){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("GAME OVER");
+            alert.setHeaderText("GAME OVER");
+            alert.showAndWait();
+        }else{
+            Question myQuestion = questions.get(indexQuestion);
+            ArrayList<String> option = myQuestion.getOptions();
+            questionLabel.setText(myQuestion.getQuestion());
+            radioButtonA1.setText(option.get(0));
+            radioButtonA2.setText(option.get(1));
+            radioButtonA3.setText(option.get(2));
+            radioButtonA4.setText(option.get(3));
+        }
+    }
+
+    /**
+     * ButtonClicked method is the action when the user presses the button
+     *
+     * @param actionEvent
+     */
 
     public void buttonClicked(ActionEvent actionEvent) {
-
-        radioButtonA1.setText("Option1 MOFO");
-        radioButtonA2.setText("Option2MOFO");
-        radioButtonA3.setText("OPTION3 MOFO");
-        radioButtonA4.setText("Option 4 MotherFucker");
         Question myQuestion = questions.get(indexQuestion);
         String correctAnswer = myQuestion.getAnswer();
+        Alert alert;
         // Get the selectedRadioButton --> possibleAnswers it's the ToggleGroup of Radio Buttons
         RadioButton selectedRadioButton = (RadioButton) possibleAnswers.getSelectedToggle();
         // Create the alert and set it
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-        if (selectedRadioButton.getText().compareTo(correctAnswer)== 0){
-            alert.setTitle("Correct Answer");
-            increaseScore();
+        if (selectedRadioButton == null){
+            alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("You must choose an answer");
         }else {
-            alert.setTitle("Wrong Answer");
+            if (selectedRadioButton.getText().compareTo(correctAnswer)== 0){
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Correct Answer");
+                increaseScore();
+            }else {
+                alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Wrong Answer");
+            }
+            alert.setHeaderText(myQuestion.getQuestion()+"\n\nCorrect answer: "+myQuestion.getAnswer());
+            /**
+             *
+             * TODO
+             * put the REASON should be in other variable of questions
+             *
+             * */
+            alert.setContentText("Reason!!!!!!");
+            alert.showAndWait();
+            updateQuestion();
         }
-        alert.setHeaderText(myQuestion.getQuestion()+"\n\nCorrect answer: "+myQuestion.getAnswer());
-        /**
-         *
-         * TODO
-         * put the REASON should be in other variable of questions
-         *
-         * */
-        alert.setContentText("Reason!!!!!!");
-        alert.showAndWait();
     }
     private void increaseIndexQuestion(){
         this.indexQuestion++;
@@ -90,14 +120,65 @@ public class Controller implements Initializable {
         this.score++;
     }
 
+    /**
+     * *TEST*
+     * Method that loads the SplashScreen Inside same window using FadeTransition
+     *
+     */
+    /*private void loadSplashScreen() {
+        try {
+            isSplashLoaded = true;
+            StackPane stackPane = FXMLLoader.load(getClass().getResource("splashscreen.fxml"));
+            borderPane.getChildren().setAll(stackPane);
+
+            // Transition effect fadeIN
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), stackPane);
+            fadeIn.setFromValue(0);
+            fadeIn.setToValue(1);
+            fadeIn.setCycleCount(1);
+
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), stackPane);
+            fadeOut.setFromValue(1);
+            fadeOut.setToValue(0);
+            fadeOut.setCycleCount(1);
+
+            fadeIn.setOnFinished((event) -> {
+                fadeOut.play();
+            });
+            fadeOut.setOnFinished((event) -> {
+                try {
+                    BorderPane parentContent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+                    borderPane.getChildren().setAll(parentContent);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+
+            fadeIn.play();
+
+
+        } catch (IOException e) {
+            //Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, e);
+            e.printStackTrace();
+        }
+
+    }*/
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Question question = new Question("Question 1", "Answer 1", "Wrong 1", "Wrong 2", "Wrong 3");
-        Question.readQuestions("questions.txt");
-        radioButtonA1.setText(question.getOptions().get(0));
-        radioButtonA2.setText(question.getOptions().get(1));
-        radioButtonA3.setText(question.getOptions().get(2));
-        radioButtonA4.setText(question.getOptions().get(3));
-
+        /*if (!isSplashLoaded) {
+            loadSplashScreen();
+        }*/
+        readQuestions();
+        Question myQuestion = questions.get(indexQuestion);
+        ArrayList<String> option = myQuestion.getOptions();
+        questionLabel.setText(myQuestion.getQuestion());
+        radioButtonA1.setText(option.get(0));
+        radioButtonA2.setText(option.get(1));
+        radioButtonA3.setText(option.get(2));
+        radioButtonA4.setText(option.get(3));
     }
 }

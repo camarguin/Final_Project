@@ -1,27 +1,29 @@
 package sample;
 
 import javafx.scene.control.RadioButton;
-
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Question {
+    /**
+     *  ATTRIBUTES
+     */
     private static Scanner scanner;
     private static final String questionsFileName = "questions.txt";
     private static final String DELIMITER = ":";
     private String question;
     private String answer;
-
-    public ArrayList<String> getWrongs() {
-        return wrongs;
-    }
-
     ArrayList<String> wrongs;
 
+    /**
+     *  CONSTRUCTORS
+     *
+     * */
     public Question(String question, String answer, String wrong1, String wrong2, String wrong3) {
         this.question = question;
         this.answer = answer;
@@ -30,12 +32,7 @@ public class Question {
         this.wrongs.add(wrong2);
         this.wrongs.add(wrong3);
     }
-    /**
-     *  CONSTRUCTOR
-     *
-     * */
     public Question() {
-
     }
 
     /**
@@ -60,20 +57,11 @@ public class Question {
         return questions ;
     }
 
-    public String getQuestion() {
-        return question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
     /**
-     *      TODO
+     *  This method creates a random arrayList with the options for every question
      *
-     *      WE NEED A FUNCTION THAT RETURN A RANDOM ARRAY WITH THE WRONGS ANSWERS
-     *
-     *      INPUT: NOTHING
-     *      OUTPUT: ARRAYLIST with all wrong options of answers
+     *  input: none
+     *  output: ArrayList with options from each question
      *
      * */
     public ArrayList<String> getOptions() {
@@ -82,9 +70,14 @@ public class Question {
         for (String w : this.getWrongs()) {
             options.add(w);
         }
+        Collections.shuffle(options);
         return options;
     }
 
+    /**
+     * TEST TO STRING method
+     *
+     */
     @Override
     public String toString() {
         return "Question{" +
@@ -92,5 +85,19 @@ public class Question {
                 ", answer='" + answer + '\'' +
                 ", wrongs=" + wrongs +
                 '}';
+    }
+
+    /**
+     * GETTERS AND SETTERS
+     *
+     */
+    public ArrayList<String> getWrongs() {
+        return wrongs;
+    }
+    public String getQuestion() {
+        return question;
+    }
+    public String getAnswer() {
+        return answer;
     }
 }

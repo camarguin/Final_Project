@@ -1,35 +1,31 @@
 package sample;
 
-import controller.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-import java.util.ArrayList;
+import java.awt.*;
 
 public class Main extends Application {
+    private final String imageURL = "icon.png";
 
-
+    @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Citizenship study");
-        primaryStage.setResizable(false);
-        //Controller.readQuestions();
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("../splashscreen/loadsplash.fxml"));
+        //primaryStage.setTitle("Citizenship study");
+        //primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new Image(imageURL));
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setScene(new Scene(root, 700, 350));
         primaryStage.show();
     }
 
 
     public static void main(String[] args) {
-        //Question questionT = new Question();
-        //ArrayList<Question> question = new ArrayList<Question>();
-        //question = Question.readQuestions("questions.txt");
-        /*for (Question q : question){
-            System.out.println(q.toString());
-            //System.out.println(Question.getOptions(q));
-        }*/
         launch(args);
     }
 }
