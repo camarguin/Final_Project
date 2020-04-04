@@ -105,6 +105,5 @@ public class Controller implements Initializable {
         radioButtonA2.setText(option.get(1));
         radioButtonA3.setText(option.get(2));
         radioButtonA4.setText(option.get(3));
-
     }
 }

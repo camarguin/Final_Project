@@ -2,12 +2,10 @@ package sample;
 
 import javafx.scene.control.RadioButton;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Question {
