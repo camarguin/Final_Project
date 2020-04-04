@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="328.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splashscreen.loadSplashController">
+   <children>
+      <ImageView fitHeight="321.0" fitWidth="645.0" pickOnBounds="true" preserveRatio="true" >
+         <image>
+            <Image url="@SplashScreen.png" />
+         </image>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin></ImageView>
+   </children>
+</StackPane>

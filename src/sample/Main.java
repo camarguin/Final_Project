@@ -1,22 +1,26 @@
 package sample;
 
-import controller.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-import java.util.ArrayList;
+import java.awt.*;
 
 public class Main extends Application {
+    private final String imageURL = "icon.png";
 
-
+    @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Citizenship study");
-        primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("../splashscreen/loadsplash.fxml"));
+        //primaryStage.setTitle("Citizenship study");
+        //primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new Image(imageURL));
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setScene(new Scene(root, 700, 350));
         primaryStage.show();
     }
 

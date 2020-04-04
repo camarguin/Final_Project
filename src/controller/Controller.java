@@ -1,20 +1,34 @@
 package controller;
 
 
+import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import sample.Question;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Controller implements Initializable {
     private static int indexQuestion = 0;
     public static ArrayList<Question> questions = new ArrayList<Question>();
     public static int score = 0;
+    @FXML
+    public BorderPane borderPane;
     @FXML
     public RadioButton radioButtonA1;
     @FXML
@@ -30,11 +44,17 @@ public class Controller implements Initializable {
     @FXML
     public ToggleGroup possibleAnswers;
 
+    public static Boolean isSplashLoaded = false;
+
 
 
     public static void readQuestions(){
         questions = Question.readQuestions("questions.txt");
     }
+
+    /**
+     * This method updates the radioButtons with the options
+     */
     public void updateQuestion(){
         increaseIndexQuestion();
         System.out.println(indexQuestion);
@@ -55,6 +75,11 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * ButtonClicked method is the action when the user presses the button
+     *
+     * @param actionEvent
+     */
 
     public void buttonClicked(ActionEvent actionEvent) {
         Question myQuestion = questions.get(indexQuestion);
@@ -95,8 +120,58 @@ public class Controller implements Initializable {
         this.score++;
     }
 
+    /**
+     * *TEST*
+     * Method that loads the SplashScreen Inside same window using FadeTransition
+     *
+     */
+    /*private void loadSplashScreen() {
+        try {
+            isSplashLoaded = true;
+            StackPane stackPane = FXMLLoader.load(getClass().getResource("splashscreen.fxml"));
+            borderPane.getChildren().setAll(stackPane);
+
+            // Transition effect fadeIN
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), stackPane);
+            fadeIn.setFromValue(0);
+            fadeIn.setToValue(1);
+            fadeIn.setCycleCount(1);
+
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), stackPane);
+            fadeOut.setFromValue(1);
+            fadeOut.setToValue(0);
+            fadeOut.setCycleCount(1);
+
+            fadeIn.setOnFinished((event) -> {
+                fadeOut.play();
+            });
+            fadeOut.setOnFinished((event) -> {
+                try {
+                    BorderPane parentContent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+                    borderPane.getChildren().setAll(parentContent);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+
+            fadeIn.play();
+
+
+        } catch (IOException e) {
+            //Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, e);
+            e.printStackTrace();
+        }
+
+    }*/
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        /*if (!isSplashLoaded) {
+            loadSplashScreen();
+        }*/
         readQuestions();
         Question myQuestion = questions.get(indexQuestion);
         ArrayList<String> option = myQuestion.getOptions();
