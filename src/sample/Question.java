@@ -1,18 +1,24 @@
 package sample;
 
-import java.awt.*;
+import javafx.scene.control.RadioButton;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Question {
     private static Scanner scanner;
-    private final String questionsFileName = "questions.txt";
-    //private final String answersFileName = "answers.txt";
+    private static final String questionsFileName = "questions.txt";
     private static final String DELIMITER = ":";
     private String question;
     private String answer;
+
+    public ArrayList<String> getWrongs() {
+        return wrongs;
+    }
+
     ArrayList<String> wrongs;
 
     public Question(String question, String answer, String wrong1, String wrong2, String wrong3) {
@@ -53,8 +59,13 @@ public class Question {
         return questions ;
     }
 
+    public String getQuestion() {
+        return question;
+    }
 
-
+    public String getAnswer() {
+        return answer;
+    }
     /**
      *      TODO
      *
@@ -64,7 +75,15 @@ public class Question {
      *      OUTPUT: ARRAYLIST with all wrong options of answers
      *
      * */
-
+    public ArrayList<String> getOptions() {
+        ArrayList<String> options = new ArrayList<>();
+        options.add(this.getAnswer());
+        for (String w : this.getWrongs()) {
+            options.add(w);
+        }
+        Collections.shuffle(options);
+        return options;
+    }
 
     @Override
     public String toString() {
