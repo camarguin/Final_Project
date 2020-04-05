@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane style="-fx-background-color: white;" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.menuController">
+   <left>
+      <Pane style="-fx-background-color: white;" prefHeight="360.0" prefWidth="565.0"  BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="questionLabel" layoutX="40" layoutY="45.0" text="How many questions do you like?">
+               <font>
+                  <Font  size="24" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="numQuestion" layoutX="40" layoutY="95.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+            <Button fx:id="btnConfirmMenu" layoutX="40" layoutY="150.0" mnemonicParsing="false" onAction="#buttonClicked" text="Confirm" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Algerian" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </left>
+</BorderPane>

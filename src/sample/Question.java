@@ -18,6 +18,7 @@ public class Question {
     private static final String DELIMITER = ":";
     private String question;
     private String answer;
+    private boolean correct = true;
     ArrayList<String> wrongs;
 
     /**
@@ -99,5 +100,13 @@ public class Question {
     }
     public String getAnswer() {
         return answer;
+    }
+
+    public boolean isCorrect() {
+        return correct;
+    }
+
+    public void setCorrect(boolean correct) {
+        this.correct = correct;
     }
 }
