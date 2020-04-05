@@ -14,16 +14,18 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import menu.menuController;
 import sample.Question;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Controller implements Initializable {
+public class gameController implements Initializable {
     private static int indexQuestion = 0;
     public static ArrayList<Question> questions = new ArrayList<Question>();
     public static int score = 0;
@@ -57,9 +59,8 @@ public class Controller implements Initializable {
      */
     public void updateQuestion(){
         increaseIndexQuestion();
-        System.out.println(indexQuestion);
-        System.out.println(questions.size());
-        if (indexQuestion>questions.size()-1){
+        if (indexQuestion> menuController.getNumberQuestionGame()-1){
+            btnCheckAnswer.getScene().getWindow().hide();
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("GAME OVER");
             alert.setHeaderText("GAME OVER");
@@ -147,7 +148,7 @@ public class Controller implements Initializable {
             });
             fadeOut.setOnFinished((event) -> {
                 try {
-                    BorderPane parentContent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+                    BorderPane parentContent = FXMLLoader.load(getClass().getResource("game.fxml"));
                     borderPane.getChildren().setAll(parentContent);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -172,7 +173,7 @@ public class Controller implements Initializable {
         /*if (!isSplashLoaded) {
             loadSplashScreen();
         }*/
-        readQuestions();
+        Collections.shuffle(questions);
         Question myQuestion = questions.get(indexQuestion);
         ArrayList<String> option = myQuestion.getOptions();
         questionLabel.setText(myQuestion.getQuestion());
@@ -180,5 +181,17 @@ public class Controller implements Initializable {
         radioButtonA2.setText(option.get(1));
         radioButtonA3.setText(option.get(2));
         radioButtonA4.setText(option.get(3));
+    }
+    public static ArrayList<String> getOptionsNumQuestions(){
+        ArrayList<String> numOptions = new ArrayList<String>();
+        int increment = questions.size()/4;
+        int num = increment;
+        numOptions.add(Integer.toString(num));
+        num += increment;
+        numOptions.add(Integer.toString(num));
+        num += increment;
+        numOptions.add(Integer.toString(num));
+        numOptions.add(Integer.toString(questions.size()));
+        return numOptions;
     }
 }

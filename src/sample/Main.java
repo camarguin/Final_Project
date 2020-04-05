@@ -16,15 +16,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../splashscreen/loadsplash.fxml"));
-        //primaryStage.setTitle("Citizenship study");
-        //primaryStage.setResizable(false);
+        primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(imageURL));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 700, 350));
         primaryStage.show();
     }
-
-
     public static void main(String[] args) {
         launch(args);
     }

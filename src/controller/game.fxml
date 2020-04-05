@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.gameController">
+    <left>
+        <Pane prefHeight="400.0" prefWidth="235.0" BorderPane.alignment="CENTER">
+            <children>
+                <fx:define>
+                    <ToggleGroup fx:id="possibleAnswers" />
+                </fx:define>
+                <Label fx:id="questionLabel" layoutX="20" layoutY="26.0">
+                   <font>
+                      <Font  size="24" />
+                   </font>
+                </Label>
+                <RadioButton fx:id="radioButtonA1" layoutX="40" layoutY="85.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                   <font>
+                      <Font size="14" />
+                   </font>
+                </RadioButton>
+                <RadioButton fx:id="radioButtonA2" layoutX="40" layoutY="113.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                    <font>
+                        <Font size="14" />
+                    </font>
+                </RadioButton>
+                <RadioButton fx:id="radioButtonA3" layoutX="40" layoutY="143.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton fx:id="radioButtonA4" layoutX="40" layoutY="174.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </RadioButton>
+                <Button fx:id="btnCheckAnswer" layoutX="400.0" layoutY="190.0" mnemonicParsing="false" onAction="#buttonClicked" text="Submit" />
+            </children>
+        </Pane>
+    </left>
+</BorderPane>

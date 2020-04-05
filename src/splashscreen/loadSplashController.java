@@ -10,10 +10,11 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static controller.gameController.readQuestions;
 
 public class loadSplashController implements Initializable {
     @FXML
@@ -25,7 +26,7 @@ public class loadSplashController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         new SplashScreen().start();
-
+        readQuestions();
     }
 
     /**
@@ -41,16 +42,17 @@ public class loadSplashController implements Initializable {
                     public void run() {
                         Parent root = null;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("../controller/sample.fxml"));
-
-
+                            root = FXMLLoader.load(getClass().getResource("../menu/menuGame.fxml"));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+
+
                         Stage stage = new Stage();
                         stage.setTitle("CITIZENCANN");
                         stage.getIcons().add(new Image(imageURL));
-                        stage.setScene(new Scene(root, 500, 400));
+                        stage.setScene(new Scene(root, 500, 300));
+                        stage.setResizable(false);
                         stage.show();
                         stackPane.getScene().getWindow().hide();
                     }
