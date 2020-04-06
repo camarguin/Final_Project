@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -29,6 +30,7 @@ import java.util.logging.Logger;
 public class gameController implements Initializable {
     private static Double progress = 0.0;
     private static int indexQuestion = 0;
+    private final String imageURL = "icon.png";
     private int numQuestions = menuController.getNumberQuestionGame();
     public static ArrayList<Question> questions = new ArrayList<Question>();
     public static int score = 0;
@@ -67,10 +69,11 @@ public class gameController implements Initializable {
         increaseIndexQuestion();
         if (indexQuestion> menuController.getNumberQuestionGame()-1){
             btnCheckAnswer.getScene().getWindow().hide();
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            changeScene();
+            /*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("GAME OVER");
             alert.setHeaderText("GAME OVER");
-            alert.showAndWait();
+            alert.showAndWait();*/
         }else{
             Question myQuestion = questions.get(indexQuestion);
             ArrayList<String> option = myQuestion.getOptions();
@@ -140,6 +143,26 @@ public class gameController implements Initializable {
 
     public int increaseProgressLabel() {
         return numQuestions;
+    }
+
+    /**
+     * Method to change the scene and show the Score in a new window
+     */
+    public void changeScene() {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("../score/score.fxml"));
+            root.getStylesheets().add("style/style.css");
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("CITIZENCANN - Score");
+        stage.getIcons().add(new Image(imageURL));
+        stage.setScene(new Scene(root, 450, 250));
+        stage.setResizable(false);
+        stage.show();
     }
 
 
