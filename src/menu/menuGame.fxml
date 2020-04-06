@@ -4,20 +4,27 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane style="-fx-background-color: white;" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.menuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="565.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.menuController">
    <left>
-      <Pane style="-fx-background-color: white;" prefHeight="360.0" prefWidth="565.0"  BorderPane.alignment="CENTER">
+      <Pane prefHeight="360.0" prefWidth="565.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Label style="-fx-font-family: Courier New;" fx:id="questionLabel" layoutX="40" layoutY="45.0" text="How many questions do you like?">
+            <Label fx:id="questionLabel" layoutX="40" layoutY="45.0" style="-fx-font-family: Courier New;" text="How many questions do you like?">
                <font>
-                  <Font  size="24"  />
+                  <Font size="24" />
                </font>
             </Label>
-            <ChoiceBox fx:id="numQuestion" layoutX="170" layoutY="100.0" prefWidth="150.0" BorderPane.alignment="CENTER"/>
+            <ChoiceBox fx:id="numQuestion" layoutX="170" layoutY="100.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
             <Button fx:id="btnConfirmMenu" layoutX="200" layoutY="150.0" mnemonicParsing="false" onAction="#buttonClicked" text="Confirm" textAlignment="CENTER" BorderPane.alignment="CENTER">
 
             </Button>
          </children>
       </Pane>
    </left>
+   <bottom>
+      <Pane prefHeight="16.0" prefWidth="565.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="500.0" layoutY="0.0" text="Version 1.0" />
+         </children>
+      </Pane>
+   </bottom>
 </BorderPane>

@@ -182,6 +182,11 @@ public class gameController implements Initializable {
         progressBar.setProgress(0);
         progressLabel.setText(0 + "/" + numQuestions);
     }
+
+    /**
+     * Method to return the possible answers of each question
+     * @return numOptions
+     */
     public static ArrayList<String> getOptionsNumQuestions(){
         ArrayList<String> numOptions = new ArrayList<String>();
         int increment = questions.size()/4;
