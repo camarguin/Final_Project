@@ -6,12 +6,20 @@
 
 <StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="328.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splashscreen.loadSplashController">
    <children>
-      <ImageView fitHeight="321.0" fitWidth="645.0" pickOnBounds="true" preserveRatio="true" >
+      <ImageView fitHeight="321.0" fitWidth="645.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@SplashScreen.png" />
          </image>
          <StackPane.margin>
             <Insets />
          </StackPane.margin></ImageView>
+      <ImageView fitHeight="31.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+         <StackPane.margin>
+            <Insets right="570.0" top="290.0" />
+         </StackPane.margin>
+         <image>
+            <Image url="@../loading.gif" />
+         </image>
+      </ImageView>
    </children>
 </StackPane>

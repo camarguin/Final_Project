@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -93,12 +94,14 @@ public class gameController implements Initializable {
             if (selectedRadioButton.getText().compareTo(correctAnswer)== 0){
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Correct Answer");
+                alert.getDialogPane().setGraphic(new ImageView("correctIcon.png"));
 
                 increaseScore();
             }else {
                 alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Wrong Answer");
                 questions.get(indexQuestion).setCorrect(false);
+                alert.getDialogPane().setGraphic(new ImageView("wrongIcon.png"));
             }
             alert.setHeaderText(myQuestion.getQuestion()+"\n\nCorrect answer: "+myQuestion.getAnswer());
             /**

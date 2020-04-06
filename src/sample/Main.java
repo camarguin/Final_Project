@@ -19,7 +19,7 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(imageURL));
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(new Scene(root, 700, 350));
+        primaryStage.setScene(new Scene(root, 647, 325));
         primaryStage.show();
     }
     public static void main(String[] args) {
