@@ -43,6 +43,7 @@ public class loadSplashController implements Initializable {
                         Parent root = null;
                         try {
                             root = FXMLLoader.load(getClass().getResource("../menu/menuGame.fxml"));
+                            root.getStylesheets().add("style/style.css");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

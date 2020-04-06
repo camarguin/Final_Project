@@ -89,18 +89,16 @@ public class gameController implements Initializable {
         // Get the selectedRadioButton --> possibleAnswers it's the ToggleGroup of Radio Buttons
         RadioButton selectedRadioButton = (RadioButton) possibleAnswers.getSelectedToggle();
         // Create the alert and set it
-        if (selectedRadioButton == null){
-            alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Error");
-            alert.setHeaderText("You must choose an answer");
-        }else {
+        if (!(selectedRadioButton == null)){
             if (selectedRadioButton.getText().compareTo(correctAnswer)== 0){
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Correct Answer");
+
                 increaseScore();
             }else {
                 alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Wrong Answer");
+                questions.get(indexQuestion).setCorrect(false);
             }
             alert.setHeaderText(myQuestion.getQuestion()+"\n\nCorrect answer: "+myQuestion.getAnswer());
             /**
@@ -173,6 +171,8 @@ public class gameController implements Initializable {
         /*if (!isSplashLoaded) {
             loadSplashScreen();
         }*/
+        questionLabel.setWrapText(true);
+        questionLabel.setMaxWidth(480);
         Collections.shuffle(questions);
         Question myQuestion = questions.get(indexQuestion);
         ArrayList<String> option = myQuestion.getOptions();

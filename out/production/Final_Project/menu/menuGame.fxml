@@ -8,16 +8,14 @@
    <left>
       <Pane style="-fx-background-color: white;" prefHeight="360.0" prefWidth="565.0"  BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="questionLabel" layoutX="40" layoutY="45.0" text="How many questions do you like?">
+            <Label style="-fx-font-family: Courier New;" fx:id="questionLabel" layoutX="40" layoutY="45.0" text="How many questions do you like?">
                <font>
-                  <Font  size="24" />
+                  <Font  size="24"  />
                </font>
             </Label>
-            <ChoiceBox fx:id="numQuestion" layoutX="40" layoutY="95.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
-            <Button fx:id="btnConfirmMenu" layoutX="40" layoutY="150.0" mnemonicParsing="false" onAction="#buttonClicked" text="Confirm" textAlignment="CENTER" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="Algerian" size="20.0" />
-               </font>
+            <ChoiceBox fx:id="numQuestion" layoutX="170" layoutY="100.0" prefWidth="150.0" BorderPane.alignment="CENTER"/>
+            <Button fx:id="btnConfirmMenu" layoutX="200" layoutY="150.0" mnemonicParsing="false" onAction="#buttonClicked" text="Confirm" textAlignment="CENTER" BorderPane.alignment="CENTER">
+
             </Button>
          </children>
       </Pane>
