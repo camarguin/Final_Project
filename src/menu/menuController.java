@@ -44,6 +44,7 @@ public class menuController implements Initializable {
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("../controller/game.fxml"));
+            root.getStylesheets().add("style/style.css");
         } catch (
                 IOException e) {
             e.printStackTrace();

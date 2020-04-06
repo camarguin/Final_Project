@@ -13,30 +13,30 @@
                 </fx:define>
                 <Label fx:id="questionLabel" layoutX="20" layoutY="26.0">
                    <font>
-                      <Font  size="24" />
+                      <Font  size="20" />
                    </font>
                 </Label>
-                <RadioButton fx:id="radioButtonA1" layoutX="40" layoutY="85.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                <RadioButton fx:id="radioButtonA1" layoutX="40" layoutY="100.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
                    <font>
                       <Font size="14" />
                    </font>
                 </RadioButton>
-                <RadioButton fx:id="radioButtonA2" layoutX="40" layoutY="113.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                <RadioButton fx:id="radioButtonA2" layoutX="40" layoutY="133.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
                     <font>
                         <Font size="14" />
                     </font>
                 </RadioButton>
-                <RadioButton fx:id="radioButtonA3" layoutX="40" layoutY="143.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                <RadioButton fx:id="radioButtonA3" layoutX="40" layoutY="163.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </RadioButton>
-                <RadioButton fx:id="radioButtonA4" layoutX="40" layoutY="174.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                <RadioButton fx:id="radioButtonA4" layoutX="40" layoutY="194.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </RadioButton>
-                <Button fx:id="btnCheckAnswer" layoutX="400.0" layoutY="190.0" mnemonicParsing="false" onAction="#buttonClicked" text="Submit" />
+                <Button fx:id="btnCheckAnswer" layoutX="380.0" layoutY="230.0" mnemonicParsing="false" onAction="#buttonClicked" text="Submit" />
             </children>
         </Pane>
     </left>

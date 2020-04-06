@@ -1,0 +1,45 @@
+.label{
+    -fx-font-weight:bold;
+    -fx-MaxWidth:200;
+    -fx-WrapText: true;
+}
+
+.button {
+    -fx-font-size: 18;
+    -fx-border-radius:20;
+    -fx-background-radius:20;
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover{
+    -fx-border-radius:20;
+    -fx-background-radius:20;
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}
+.button:pressed{
+    -fx-border-radius:20;
+    -fx-background-radius:20;
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+    -fx-rotate:10;
+}
+
+
+.radio-button:selected .radio {
+    -fx-text-font-size: 16;
+    -fx-border-color: #15171c;
+    -fx-border-radius: 130px;
+}
