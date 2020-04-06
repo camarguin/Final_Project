@@ -52,7 +52,7 @@ public class menuController implements Initializable {
         Stage stage = new Stage();
         stage.setTitle("CITIZENCANN");
         stage.getIcons().add(new Image(imageURL));
-        stage.setScene(new Scene(root, 500, 300));
+        stage.setScene(new Scene(root, 700, 450));
         stage.setResizable(false);
         stage.show();
         btnConfirmMenu.getScene().getWindow().hide();

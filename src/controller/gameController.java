@@ -27,7 +27,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class gameController implements Initializable {
+    private static Double progress = 0.0;
     private static int indexQuestion = 0;
+    private int numQuestions = menuController.getNumberQuestionGame();
     public static ArrayList<Question> questions = new ArrayList<Question>();
     public static int score = 0;
     @FXML
@@ -46,9 +48,12 @@ public class gameController implements Initializable {
     public Button btnCheckAnswer;
     @FXML
     public ToggleGroup possibleAnswers;
+    @FXML
+    public ProgressBar progressBar;
+    @FXML
+    public Label progressLabel;
 
     public static Boolean isSplashLoaded = false;
-
 
 
     public static void readQuestions(){
@@ -104,6 +109,8 @@ public class gameController implements Initializable {
                 alert.getDialogPane().setGraphic(new ImageView("wrongIcon.png"));
             }
             alert.setHeaderText(myQuestion.getQuestion()+"\n\nCorrect answer: "+myQuestion.getAnswer());
+            progressBar.setProgress(increaseProgress());
+            progressLabel.setText((indexQuestion + 1) + "/" + numQuestions);
             /**
              *
              * TODO
@@ -123,57 +130,22 @@ public class gameController implements Initializable {
     }
 
     /**
-     * *TEST*
-     * Method that loads the SplashScreen Inside same window using FadeTransition
+     * Method calculates the progress in the progressBar
      *
      */
-    /*private void loadSplashScreen() {
-        try {
-            isSplashLoaded = true;
-            StackPane stackPane = FXMLLoader.load(getClass().getResource("splashscreen.fxml"));
-            borderPane.getChildren().setAll(stackPane);
+    public Double increaseProgress() {
 
-            // Transition effect fadeIN
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), stackPane);
-            fadeIn.setFromValue(0);
-            fadeIn.setToValue(1);
-            fadeIn.setCycleCount(1);
+        return progress += 1.0 / numQuestions;
+    }
 
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), stackPane);
-            fadeOut.setFromValue(1);
-            fadeOut.setToValue(0);
-            fadeOut.setCycleCount(1);
-
-            fadeIn.setOnFinished((event) -> {
-                fadeOut.play();
-            });
-            fadeOut.setOnFinished((event) -> {
-                try {
-                    BorderPane parentContent = FXMLLoader.load(getClass().getResource("game.fxml"));
-                    borderPane.getChildren().setAll(parentContent);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
-
-
-            fadeIn.play();
-
-
-        } catch (IOException e) {
-            //Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, e);
-            e.printStackTrace();
-        }
-
-    }*/
+    public int increaseProgressLabel() {
+        return numQuestions;
+    }
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*if (!isSplashLoaded) {
-            loadSplashScreen();
-        }*/
         questionLabel.setWrapText(true);
         questionLabel.setMaxWidth(480);
         Collections.shuffle(questions);
@@ -184,6 +156,8 @@ public class gameController implements Initializable {
         radioButtonA2.setText(option.get(1));
         radioButtonA3.setText(option.get(2));
         radioButtonA4.setText(option.get(3));
+        progressBar.setProgress(0);
+        progressLabel.setText(0 + "/" + numQuestions);
     }
     public static ArrayList<String> getOptionsNumQuestions(){
         ArrayList<String> numOptions = new ArrayList<String>();

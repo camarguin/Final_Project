@@ -4,22 +4,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.gameController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.gameController">
     <left>
-        <Pane prefHeight="400.0" prefWidth="235.0" BorderPane.alignment="CENTER">
+        <Pane prefHeight="412.0" prefWidth="235.0" BorderPane.alignment="CENTER">
             <children>
                 <fx:define>
                     <ToggleGroup fx:id="possibleAnswers" />
                 </fx:define>
                 <Label fx:id="questionLabel" layoutX="20" layoutY="26.0">
                    <font>
-                      <Font  size="20" />
+                      <Font size="20" />
                    </font>
                 </Label>
-                <RadioButton fx:id="radioButtonA1" layoutX="40" layoutY="100.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                <RadioButton fx:id="radioButtonA1" layoutX="40" layoutY="100.0" mnemonicParsing="false">
                    <font>
                       <Font size="14" />
                    </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="possibleAnswers" />
+               </toggleGroup>
                 </RadioButton>
                 <RadioButton fx:id="radioButtonA2" layoutX="40" layoutY="133.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
                     <font>
@@ -40,4 +43,13 @@
             </children>
         </Pane>
     </left>
+   <top>
+      <Pane prefHeight="55.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <ProgressBar fx:id="progressBar" layoutX="12.0" layoutY="28.0" prefHeight="15.0" prefWidth="493.0" progress="0.0" />
+            <Label layoutX="12.0" layoutY="6.0" text="Progress:" />
+            <Label layoutX="508.0" layoutY="27.0" text="" fx:id="progressLabel" />
+         </children>
+      </Pane>
+   </top>
 </BorderPane>
