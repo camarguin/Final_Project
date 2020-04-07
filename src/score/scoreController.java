@@ -37,8 +37,7 @@ public class scoreController implements Initializable {
     }
 
     public Double calculateScore() {
-        //Double score = gameController.score * 1.0 / menuController.getNumberQuestionGame();
-        Double score = 1.0 / menuController.getNumberQuestionGame();
+        Double score = gameController.score * 1.0 / menuController.getNumberQuestionGame();
 
         return score;
     }
