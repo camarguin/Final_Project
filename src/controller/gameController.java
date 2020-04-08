@@ -32,7 +32,6 @@ public class gameController implements Initializable {
     private int numQuestions = menuController.getNumberQuestionGame();
     public static ArrayList<Question> questions = new ArrayList<Question>();
     private static final Integer STARTTIME = 0;
-    public static Integer[] timeEachQuestionArray;
     private Timeline timeline;
     private Integer timeSeconds = STARTTIME;
     private Integer timeMinutes = STARTTIME;
@@ -104,8 +103,6 @@ public class gameController implements Initializable {
         RadioButton selectedRadioButton = (RadioButton) possibleAnswers.getSelectedToggle();
         // Create the alert and set it
         if (!(selectedRadioButton == null)){
-            timeEachQuestionArray[indexQuestion] = getTimeTotal();
-            //System.out.println(timeEachQuestionArray[indexQuestion].toString());
             if (selectedRadioButton.getText().compareTo(correctAnswer)== 0){
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Correct Answer");
@@ -203,22 +200,15 @@ public class gameController implements Initializable {
     }
 
     /**
-     * Getter and Setter TimeTotal
+     * Getter TimeTotal
      * @return TimeTotal
      */
-    public Integer getTimeTotal() {
+    public int getTimeTotal() {
         return timeTotal;
     }
 
-    public void setTimeTotal(Integer timeTotal) {
-        this.timeTotal = timeTotal;
-    }
-
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        timeEachQuestionArray = new Integer[numQuestions+1];
         questionLabel.setWrapText(true);
         questionLabel.setMaxWidth(480);
         Collections.shuffle(questions);

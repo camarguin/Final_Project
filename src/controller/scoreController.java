@@ -19,9 +19,16 @@ public class scoreController implements Initializable {
     public Label scoreLabel;
     @FXML
     public TextField timerTextField;
+    @FXML
+    public TextField timerQuestionTextField;
+
+    /**
+     * Method to update the score in the progress cirle bar and update the messages for the user
+     */
 
     private void updateScoreMessages() {
         timerTextField.setText(timeTotalString());
+        timerQuestionTextField.setText(String.format("%.2f seconds", calculateTime()));
         if (calculateScore() == 1.0) {
             scoreLabel.setText("Awesome job! You are totally ready for the Test.");
         } else if (calculateScore() >= 0.7 && calculateScore() < 1.0) {
@@ -46,13 +53,12 @@ public class scoreController implements Initializable {
     }
 
     /**
-     * TODO
-     * method to calculate the user's performance based in the times.
+     * Method to calculate the average time per question based in the times.
      * @return
      */
-    /*public Double calculateTime() {
-
-    }*/
+    public double calculateTime() {
+        return gameController.timeTotal * 1.0 / menuController.getNumberQuestionGame();
+    }
 
     /**
      * This Method calculates the score based in the correct answers and the quantity of questions
