@@ -8,12 +8,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import menu.menuController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class scoreController implements Initializable {
@@ -22,8 +24,11 @@ public class scoreController implements Initializable {
     public ProgressIndicator progressScore;
     @FXML
     public Label scoreLabel;
+    @FXML
+    public TextField timerTextField;
 
     private void updateScoreMessages() {
+        timerTextField.setText(timeTotalString());
         if (calculateScore() == 1.0) {
             scoreLabel.setText("Awesome job! You are totally ready for the Test.");
         } else if (calculateScore() >= 0.7 && calculateScore() < 1.0) {
@@ -36,6 +41,30 @@ public class scoreController implements Initializable {
 
     }
 
+    /**
+     * Method that prints the time with the score
+     * @return
+     */
+    private String timeTotalString() {
+        int hours = (gameController.timeTotal / 60) / 60;
+        int minutes = (gameController.timeTotal / 60) % 60;
+        int seconds = gameController.timeTotal % 60;
+        return hours + ":" + minutes + ":" + seconds;
+    }
+
+    /**
+     * TODO
+     * method to calculate the user's performance based in the times.
+     * @return
+     */
+    /*public Double calculateTime() {
+
+    }*/
+
+    /**
+     * This Method calculates the score based in the correct answers and the quantity of questions
+     * @return score
+     */
     public Double calculateScore() {
         Double score = gameController.score * 1.0 / menuController.getNumberQuestionGame();
 

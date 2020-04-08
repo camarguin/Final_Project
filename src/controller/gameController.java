@@ -2,8 +2,12 @@ package controller;
 
 
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,6 +37,13 @@ public class gameController implements Initializable {
     private final String imageURL = "icon.png";
     private int numQuestions = menuController.getNumberQuestionGame();
     public static ArrayList<Question> questions = new ArrayList<Question>();
+    private static final Integer STARTTIME = 0;
+    public static Integer[] timeEachQuestionArray;
+    private Timeline timeline;
+    private Integer timeSeconds = STARTTIME;
+    private Integer timeMinutes = STARTTIME;
+    private Integer timeHours = STARTTIME;
+    public static Integer timeTotal = STARTTIME;
     public static int score = 0;
     @FXML
     public BorderPane borderPane;
@@ -54,6 +65,8 @@ public class gameController implements Initializable {
     public ProgressBar progressBar;
     @FXML
     public Label progressLabel;
+    @FXML
+    public Label timerLabel;
 
     public static Boolean isSplashLoaded = false;
 
@@ -68,6 +81,7 @@ public class gameController implements Initializable {
     public void updateQuestion(){
         increaseIndexQuestion();
         if (indexQuestion> menuController.getNumberQuestionGame()-1){
+            timeline.stop();
             btnCheckAnswer.getScene().getWindow().hide();
             changeScene();
             /*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -92,6 +106,7 @@ public class gameController implements Initializable {
      */
 
     public void buttonClicked(ActionEvent actionEvent) {
+
         Question myQuestion = questions.get(indexQuestion);
         String correctAnswer = myQuestion.getAnswer();
         Alert alert;
@@ -99,6 +114,8 @@ public class gameController implements Initializable {
         RadioButton selectedRadioButton = (RadioButton) possibleAnswers.getSelectedToggle();
         // Create the alert and set it
         if (!(selectedRadioButton == null)){
+            timeEachQuestionArray[indexQuestion] = getTimeTotal();
+            //System.out.println(timeEachQuestionArray[indexQuestion].toString());
             if (selectedRadioButton.getText().compareTo(correctAnswer)== 0){
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Correct Answer");
@@ -123,6 +140,7 @@ public class gameController implements Initializable {
             alert.setContentText("Reason!!!!!!");
             alert.showAndWait();
             updateQuestion();
+
         }
     }
     private void increaseIndexQuestion(){
@@ -165,10 +183,53 @@ public class gameController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Method to start the timer when the user starts to do the test
+     */
+    public void startTimer() {
+        timerLabel.setText(timeHours.toString() + ":" + timeMinutes.toString() + ":" + timeSeconds.toString());
+        timeline = new Timeline();
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.getKeyFrames().add(
+                new KeyFrame(Duration.seconds(1),
+                        new EventHandler() {
+                            @Override
+                            public void handle(Event event) {
+                                timeSeconds++;
+                                timeTotal++;
+                                // update timerLabel
+                                if (timeSeconds == 59){
+                                    timeMinutes++;
+                                    timeSeconds = 0;
+                                    if (timeMinutes == 59) {
+                                        timeMinutes = 0;
+                                        timeHours++;
+                                    }
+                                }
+                                timerLabel.setText(timeHours.toString() + ":" + timeMinutes.toString() + ":" + timeSeconds.toString());
+                            }
+                        }));
+        timeline.playFromStart();
+
+    }
+
+    /**
+     * Getter and Setter TimeTotal
+     * @return TimeTotal
+     */
+    public Integer getTimeTotal() {
+        return timeTotal;
+    }
+
+    public void setTimeTotal(Integer timeTotal) {
+        this.timeTotal = timeTotal;
+    }
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        timeEachQuestionArray = new Integer[numQuestions+1];
         questionLabel.setWrapText(true);
         questionLabel.setMaxWidth(480);
         Collections.shuffle(questions);
@@ -181,6 +242,7 @@ public class gameController implements Initializable {
         radioButtonA4.setText(option.get(3));
         progressBar.setProgress(0);
         progressLabel.setText(0 + "/" + numQuestions);
+        startTimer();
     }
 
     /**

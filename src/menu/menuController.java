@@ -1,6 +1,7 @@
 package menu;
 
 import controller.gameController;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,7 +24,6 @@ import java.util.ResourceBundle;
 public class menuController implements Initializable {
     private final String imageURL = "icon.png";
     public static int numberQuestionGame = 0;
-    private StackPane stackPane;
 
     @FXML
     public Button btnConfirmMenu;
@@ -56,6 +56,10 @@ public class menuController implements Initializable {
         stage.setResizable(false);
         stage.show();
         btnConfirmMenu.getScene().getWindow().hide();
+    }
+
+    public void startTimer() {
+
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

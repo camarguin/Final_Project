@@ -44,11 +44,13 @@
         </Pane>
     </left>
    <top>
-      <Pane prefHeight="55.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="67.0" prefWidth="550.0" BorderPane.alignment="CENTER">
          <children>
             <ProgressBar fx:id="progressBar" layoutX="12.0" layoutY="28.0" prefHeight="15.0" prefWidth="493.0" progress="0.0" />
             <Label layoutX="12.0" layoutY="6.0" text="Progress:" />
             <Label fx:id="progressLabel" layoutX="508.0" layoutY="27.0" text="" />
+            <Label layoutX="12.0" layoutY="45.0" text="Timer:" />
+            <Label fx:id="timerLabel" layoutX="52.0" layoutY="45.0" />
          </children>
       </Pane>
    </top>

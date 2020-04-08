@@ -9,6 +9,8 @@
             <ProgressIndicator fx:id="progressScore" layoutX="196.0" layoutY="108.0" prefHeight="88.0" prefWidth="99.0" progress="0.58" scaleX="2.0" scaleY="2.0" scaleZ="2.0" />
             <Label fx:id="scoreLabel" layoutX="196.0" layoutY="26.0" text="Label" />
             <Label layoutX="355.0" layoutY="185.0" text="Version 1.0" />
+         <Label layoutX="21.0" layoutY="35.0" text="Your Time:" />
+         <TextField fx:id="timerTextField" layoutX="14.0" layoutY="52.0" prefHeight="25.0" prefWidth="90.0" promptText="00:00:00" />
          </children>
       </Pane>
 </StackPane>
