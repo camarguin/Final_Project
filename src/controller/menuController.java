@@ -1,7 +1,5 @@
-package menu;
+package controller;
 
-import controller.gameController;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,7 +19,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class menuController implements Initializable {
-    private final String imageURL = "icon.png";
+    private final String imageURL = "images/icon.png";
     public static int numberQuestionGame = 0;
 
     @FXML
@@ -43,7 +40,7 @@ public class menuController implements Initializable {
     public void changeStage(){
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("../controller/game.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../view/game.fxml"));
             root.getStylesheets().add("style/style.css");
         } catch (
                 IOException e) {
@@ -58,9 +55,6 @@ public class menuController implements Initializable {
         btnConfirmMenu.getScene().getWindow().hide();
     }
 
-    public void startTimer() {
-
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ArrayList<String> options = gameController.getOptionsNumQuestions();

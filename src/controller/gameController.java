@@ -1,10 +1,8 @@
 package controller;
 
 
-import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -17,24 +15,20 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import menu.menuController;
-import sample.Question;
+import driver.Question;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class gameController implements Initializable {
     private static Double progress = 0.0;
     private static int indexQuestion = 0;
-    private final String imageURL = "icon.png";
+    private final String imageURL = "images/icon.png";
     private int numQuestions = menuController.getNumberQuestionGame();
     public static ArrayList<Question> questions = new ArrayList<Question>();
     private static final Integer STARTTIME = 0;
@@ -84,10 +78,6 @@ public class gameController implements Initializable {
             timeline.stop();
             btnCheckAnswer.getScene().getWindow().hide();
             changeScene();
-            /*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("GAME OVER");
-            alert.setHeaderText("GAME OVER");
-            alert.showAndWait();*/
         }else{
             Question myQuestion = questions.get(indexQuestion);
             ArrayList<String> option = myQuestion.getOptions();
@@ -119,14 +109,14 @@ public class gameController implements Initializable {
             if (selectedRadioButton.getText().compareTo(correctAnswer)== 0){
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Correct Answer");
-                alert.getDialogPane().setGraphic(new ImageView("correctIcon.png"));
+                alert.getDialogPane().setGraphic(new ImageView("images/correctIcon.png"));
 
                 increaseScore();
             }else {
                 alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Wrong Answer");
                 questions.get(indexQuestion).setCorrect(false);
-                alert.getDialogPane().setGraphic(new ImageView("wrongIcon.png"));
+                alert.getDialogPane().setGraphic(new ImageView("images/wrongIcon.png"));
             }
             alert.setHeaderText(myQuestion.getQuestion()+"\n\nCorrect answer: "+myQuestion.getAnswer());
             progressBar.setProgress(increaseProgress());
@@ -137,7 +127,6 @@ public class gameController implements Initializable {
              * put the REASON should be in other variable of questions
              *
              * */
-            alert.setContentText("Reason!!!!!!");
             alert.showAndWait();
             updateQuestion();
 
@@ -169,7 +158,7 @@ public class gameController implements Initializable {
     public void changeScene() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("../score/score.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../view/score.fxml"));
             root.getStylesheets().add("style/style.css");
         } catch (
                 IOException e) {
@@ -178,7 +167,7 @@ public class gameController implements Initializable {
         Stage stage = new Stage();
         stage.setTitle("CITIZENCANN - Score");
         stage.getIcons().add(new Image(imageURL));
-        stage.setScene(new Scene(root, 450, 250));
+        stage.setScene(new Scene(root, 459, 251));
         stage.setResizable(false);
         stage.show();
     }

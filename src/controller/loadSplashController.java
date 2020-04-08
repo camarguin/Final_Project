@@ -1,4 +1,4 @@
-package splashscreen;
+package controller;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -20,7 +20,7 @@ public class loadSplashController implements Initializable {
     @FXML
     private StackPane stackPane;
 
-    private final String imageURL = "icon.png";
+    private final String imageURL = "images/icon.png";
 
 
     @Override
@@ -42,7 +42,7 @@ public class loadSplashController implements Initializable {
                     public void run() {
                         Parent root = null;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("../menu/menuGame.fxml"));
+                            root = FXMLLoader.load(getClass().getResource("../view/menuGame.fxml"));
                             root.getStylesheets().add("style/style.css");
                         } catch (IOException e) {
                             e.printStackTrace();
