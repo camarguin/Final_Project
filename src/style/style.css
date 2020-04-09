@@ -2,6 +2,7 @@
     -fx-font-weight:bold;
     -fx-MaxWidth:200;
     -fx-WrapText: true;
+    -fx-text-alignment: center;
 }
 
 .button {

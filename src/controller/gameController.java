@@ -29,6 +29,7 @@ public class gameController implements Initializable {
     private static Double progress = 0.0;
     private static int indexQuestion = 0;
     private final String imageURL = "images/icon.png";
+    private final String CSSDirection = "style/style.css";
     private int numQuestions = menuController.getNumberQuestionGame();
     public static ArrayList<Question> questions = new ArrayList<Question>();
     private static final Integer STARTTIME = 0;
@@ -75,7 +76,8 @@ public class gameController implements Initializable {
         increaseIndexQuestion();
         if (indexQuestion> menuController.getNumberQuestionGame()-1){
             timeline.stop();
-            btnCheckAnswer.getScene().getWindow().hide();
+            Stage stage1 = (Stage) btnCheckAnswer.getScene().getWindow();
+            stage1.close();
             changeScene();
         }else{
             Question myQuestion = questions.get(indexQuestion);
@@ -118,12 +120,6 @@ public class gameController implements Initializable {
             alert.setHeaderText(myQuestion.getQuestion()+"\n\nCorrect answer: "+myQuestion.getAnswer());
             progressBar.setProgress(increaseProgress());
             progressLabel.setText((indexQuestion + 1) + "/" + numQuestions);
-            /**
-             *
-             * TODO
-             * put the REASON should be in other variable of questions
-             *
-             * */
             alert.showAndWait();
             updateQuestion();
 
@@ -163,6 +159,7 @@ public class gameController implements Initializable {
         }
         Stage stage = new Stage();
         stage.setTitle("CITIZENCANN - Score");
+        root.getStylesheets().add(CSSDirection);
         stage.getIcons().add(new Image(imageURL));
         stage.setScene(new Scene(root, 459, 251));
         stage.setResizable(false);
@@ -224,11 +221,21 @@ public class gameController implements Initializable {
         startTimer();
     }
 
+    public static void setProgress(Double progress) {
+        gameController.progress = progress;
+    }
+
+    public static void setIndexQuestion(int indexQuestion) {
+        gameController.indexQuestion = indexQuestion;
+    }
+
     /**
      * Method to return the possible answers of each question
      * @return numOptions
      */
     public static ArrayList<String> getOptionsNumQuestions(){
+        setProgress((double) 0);
+        setIndexQuestion(0);
         ArrayList<String> numOptions = new ArrayList<String>();
         int increment = questions.size()/4;
         int num = increment;

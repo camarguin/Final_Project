@@ -17,9 +17,9 @@ import java.util.ResourceBundle;
 import static controller.gameController.readQuestions;
 
 public class loadSplashController implements Initializable {
+    private final String CSSDirection = "style/style.css";
     @FXML
     private StackPane stackPane;
-
     private final String imageURL = "images/icon.png";
 
 
@@ -43,7 +43,7 @@ public class loadSplashController implements Initializable {
                         Parent root = null;
                         try {
                             root = FXMLLoader.load(getClass().getResource("../view/menuGame.fxml"));
-                            root.getStylesheets().add("style/style.css");
+                            root.getStylesheets().add(CSSDirection);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -55,7 +55,8 @@ public class loadSplashController implements Initializable {
                         stage.setScene(new Scene(root, 500, 300));
                         stage.setResizable(false);
                         stage.show();
-                        stackPane.getScene().getWindow().hide();
+                        Stage stage1 = (Stage) stackPane.getScene().getWindow();
+                        stage1.close();
                     }
                 });
 

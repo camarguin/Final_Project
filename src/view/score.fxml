@@ -6,14 +6,14 @@
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="419.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.scoreController">
       <Pane prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <ProgressIndicator fx:id="progressScore" layoutX="196.0" layoutY="108.0" prefHeight="88.0" prefWidth="99.0" progress="0.58" scaleX="2.0" scaleY="2.0" scaleZ="2.0" />
-            <Label fx:id="scoreLabel" layoutX="196.0" layoutY="26.0" text="Label" />
-            <Label layoutX="354.0" layoutY="218.0" text="Version 1.0" />
-         <Label layoutX="14.0" layoutY="35.0" text="Total TIme:" />
-         <TextField fx:id="timerTextField" layoutX="14.0" layoutY="52.0" prefHeight="25.0" prefWidth="90.0" />
-         <Label layoutX="14.0" layoutY="80.0" text="Time per Question:" />
-         <TextField fx:id="timerQuestionTextField" layoutX="14.0" layoutY="101.0" prefHeight="25.0" prefWidth="90.0" />
-         <Button fx:id="retruButton" layoutX="183.0" layoutY="193.0" mnemonicParsing="false" />
+            <Label fx:id="scoreLabel" layoutX="150.0" layoutY="26.0" text="Label" />
+            <ProgressIndicator fx:id="progressScore" layoutX="250.0" layoutY="95.0" prefHeight="88.0" prefWidth="99.0" progress="0.58" scaleX="2.0" scaleY="2.0" scaleZ="2.0" />
+            <Label layoutX="14.0" layoutY="35.0" text="Total TIme:" />
+            <TextField fx:id="timerTextField" layoutX="14.0" layoutY="52.0" prefHeight="25.0" prefWidth="90.0" />
+            <Label layoutX="14.0" layoutY="80.0" text="Time per Question:" />
+            <TextField fx:id="timerQuestionTextField" layoutX="14.0" layoutY="101.0" prefHeight="25.0" prefWidth="90.0" />
+            <Button fx:id="retryButton" layoutX="183.0" layoutY="193.0" mnemonicParsing="false" text="Retry" onAction="#buttonClicked"/>
+            <Label layoutX="380.0" layoutY="218.0" text="Version 1.0" />
          </children>
       </Pane>
 </StackPane>

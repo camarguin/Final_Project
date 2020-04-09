@@ -52,7 +52,8 @@ public class menuController implements Initializable {
         stage.setScene(new Scene(root, 700, 450));
         stage.setResizable(false);
         stage.show();
-        btnConfirmMenu.getScene().getWindow().hide();
+        Stage stage1 = (Stage) btnConfirmMenu.getScene().getWindow();
+        stage1.close();
     }
 
     @Override
