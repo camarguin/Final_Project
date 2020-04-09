@@ -13,12 +13,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../view/loadsplash.fxml"));
-        primaryStage.setResizable(false);
-        primaryStage.getIcons().add(new Image(imageURL));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(new Scene(root, 647, 325));
-        primaryStage.show();
+            Parent root = FXMLLoader.load(getClass().getResource("../view/loadsplash.fxml"));
+            primaryStage.setResizable(false);
+            primaryStage.getIcons().add(new Image(imageURL));
+            primaryStage.initStyle(StageStyle.UNDECORATED);
+            primaryStage.setScene(new Scene(root, 647, 325));
+            primaryStage.show();
     }
     public static void main(String[] args) {
         launch(args);

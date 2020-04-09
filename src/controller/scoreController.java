@@ -1,18 +1,29 @@
 package controller;
 
 import controller.gameController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import controller.menuController;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class scoreController implements Initializable {
-
+    private final String CSSDirection = "style/style.css";
+    private final String imageURL = "images/icon.png";
+    private StackPane stackPane;
     @FXML
     public ProgressIndicator progressScore;
     @FXML
@@ -21,6 +32,8 @@ public class scoreController implements Initializable {
     public TextField timerTextField;
     @FXML
     public TextField timerQuestionTextField;
+    @FXML
+    public Button retryButton;
 
     /**
      * Method to update the score in the progress cirle bar and update the messages for the user
@@ -68,6 +81,25 @@ public class scoreController implements Initializable {
         Double score = gameController.score * 1.0 / menuController.getNumberQuestionGame();
 
         return score;
+    }
+    public void buttonClicked(ActionEvent actionEvent) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("../view/menuGame.fxml"));
+            root.getStylesheets().add(CSSDirection);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        Stage stage = new Stage();
+        stage.setTitle("CITIZENCANN");
+        stage.getIcons().add(new Image(imageURL));
+        stage.setScene(new Scene(root, 500, 300));
+        stage.setResizable(false);
+        stage.show();
+        Stage stage1 = (Stage) retryButton.getScene().getWindow();
+        stage1.close();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
