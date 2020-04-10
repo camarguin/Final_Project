@@ -6,41 +6,50 @@
 }
 
 .button {
-    -fx-font-size: 18;
-    -fx-border-radius:20;
-    -fx-background-radius:20;
-    -fx-font-family: "Courier New";
-    -fx-font-weight: bold;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-size: 15px;
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
 }
 
 .button:hover{
-    -fx-border-radius:20;
-    -fx-background-radius:20;
-    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
-    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
-    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
-    -fx-text-fill: -fx-text-base-color;
-    -fx-alignment: CENTER;
-    -fx-content-display: LEFT;
+    -fx-font-size: 15px;
+    -fx-font-weight:bold;
+        -fx-background-color:
+                #c3c4c4,
+                linear-gradient(#d6d6d6 50%, white 100%),
+                radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+        -fx-background-radius: 30;
+        -fx-background-insets: 0,1,1;
+        -fx-text-fill: black;
+        -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
 }
 .button:pressed{
-    -fx-border-radius:20;
-    -fx-background-radius:20;
-    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
-    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
-    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
-    -fx-text-fill: -fx-text-base-color;
-    -fx-alignment: CENTER;
-    -fx-content-display: LEFT;
-    -fx-rotate:10;
+    -fx-font-size: 15px;
+        -fx-background-color:
+                #a7cbd1,
+                linear-gradient(#d6d6d6 50%, white 100%),
+                radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+        -fx-background-radius: 30;
+        -fx-background-insets: 0,1,1;
+        -fx-text-fill: black;
+        -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
 }
 
 
 .radio-button:selected .radio {
-    -fx-text-font-size: 16;
-    -fx-border-color: #15171c;
     -fx-border-radius: 130px;
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+            -fx-background-insets: 0,1,1;
+            -fx-text-fill: black;
+            -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
 }
