@@ -17,6 +17,7 @@
             <Button fx:id="btnConfirmMenu" layoutX="200" layoutY="150.0" mnemonicParsing="false" onAction="#buttonClicked" text="Confirm" textAlignment="CENTER" BorderPane.alignment="CENTER">
 
             </Button>
+            <Label layoutX="73.0" layoutY="194.0" prefHeight="93.0" prefWidth="420.0" text="After clicking on Confirm, a timer will start and at the end, you will&#10;be able to see your response time and a summary of the&#10;performance of the test." textAlignment="CENTER" wrapText="true" />
          </children>
       </Pane>
    </left>
