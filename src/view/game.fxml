@@ -16,17 +16,20 @@
                       <Font size="20" />
                    </font>
                 </Label>
-                <RadioButton fx:id="radioButtonA1" layoutX="40" layoutY="100.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                <RadioButton fx:id="radioButtonA1" layoutX="40.0" layoutY="104.0" mnemonicParsing="false">
                    <font>
                       <Font size="14" />
                    </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="possibleAnswers" />
+               </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="radioButtonA2" layoutX="40" layoutY="133.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                <RadioButton fx:id="radioButtonA2" layoutX="40" layoutY="134.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
                     <font>
                         <Font size="14" />
                     </font>
                 </RadioButton>
-                <RadioButton fx:id="radioButtonA3" layoutX="40" layoutY="163.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                <RadioButton fx:id="radioButtonA3" layoutX="40" layoutY="164.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -37,6 +40,8 @@
                     </font>
                 </RadioButton>
                 <Button fx:id="btnCheckAnswer" layoutX="380.0" layoutY="230.0" mnemonicParsing="false" onAction="#buttonClicked" text="Submit" />
+
+
             </children>
         </Pane>
     </left>

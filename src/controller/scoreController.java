@@ -43,13 +43,13 @@ public class scoreController implements Initializable {
         timerTextField.setText(timeTotalString());
         timerQuestionTextField.setText(String.format("%.2f seconds", calculateTime()));
         if (calculateScore() == 1.0) {
-            scoreLabel.setText("Awesome job! You are totally ready for the Test.");
+            scoreLabel.setText("Great job! You are ready for the Test.");
         } else if (calculateScore() >= 0.7 && calculateScore() < 1.0) {
             scoreLabel.setText("Good Job! But not enough, Keep Practicing and you will be ready");
         } else if (calculateScore() >= 0.1 && calculateScore() < 0.6) {
-            scoreLabel.setText("Terrible Job! Go practice more!");
+            scoreLabel.setText("Nice, study more to get better next time.");
         } else {
-            scoreLabel.setText("Awful job! You got 0 correct answers!");
+            scoreLabel.setText("You didn't do well. Study further and retake the test.");
         }
 
     }

@@ -170,6 +170,10 @@ public class gameController implements Initializable {
      * Method to start the timer when the user starts to do the test
      */
     public void startTimer() {
+        timeTotal = 0;
+        timeSeconds = 0;
+        timeMinutes = 0;
+        timeHours = 0;
         timerLabel.setText(timeHours.toString() + ":" + timeMinutes.toString() + ":" + timeSeconds.toString());
         timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
