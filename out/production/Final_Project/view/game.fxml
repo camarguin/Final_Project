@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.gameController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.gameController">
     <left>
         <Pane prefHeight="412.0" prefWidth="235.0" BorderPane.alignment="CENTER">
             <children>
@@ -16,7 +16,7 @@
                       <Font size="20" />
                    </font>
                 </Label>
-                <RadioButton fx:id="radioButtonA1" layoutX="40.0" layoutY="104.0" mnemonicParsing="false">
+                <RadioButton fx:id="radioButtonA1" layoutX="30.0" layoutY="104.0" mnemonicParsing="false">
                    <font>
                       <Font size="14" />
                    </font>
@@ -24,22 +24,22 @@
                   <ToggleGroup fx:id="possibleAnswers" />
                </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="radioButtonA2" layoutX="40" layoutY="134.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                <RadioButton fx:id="radioButtonA2" layoutX="30.0" layoutY="134.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
                     <font>
                         <Font size="14" />
                     </font>
                 </RadioButton>
-                <RadioButton fx:id="radioButtonA3" layoutX="40" layoutY="164.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                <RadioButton fx:id="radioButtonA3" layoutX="30.0" layoutY="164.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </RadioButton>
-                <RadioButton fx:id="radioButtonA4" layoutX="40" layoutY="194.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
+                <RadioButton fx:id="radioButtonA4" layoutX="30.0" layoutY="194.0" mnemonicParsing="false" toggleGroup="$possibleAnswers">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </RadioButton>
-                <Button fx:id="btnCheckAnswer" layoutX="380.0" layoutY="230.0" mnemonicParsing="false" onAction="#buttonClicked" text="Submit" />
+                <Button fx:id="btnCheckAnswer" layoutX="375.0" layoutY="238.0" mnemonicParsing="false" onAction="#buttonClicked" text="Submit" />
 
 
             </children>
@@ -48,10 +48,10 @@
    <top>
       <Pane prefHeight="67.0" prefWidth="550.0" BorderPane.alignment="CENTER">
          <children>
-            <ProgressBar fx:id="progressBar" layoutX="12.0" layoutY="28.0" prefHeight="15.0" prefWidth="493.0" progress="0.0" />
+            <ProgressBar fx:id="progressBar" layoutX="12.0" layoutY="28.0" prefHeight="15.0" prefWidth="734.0" progress="0.0" />
             <Label layoutX="12.0" layoutY="6.0" text="Progress:" />
-            <Label fx:id="progressLabel" layoutX="508.0" layoutY="27.0" text="" />
-            <Label layoutX="12.0" layoutY="45.0" text="Timer:" />
+            <Label fx:id="progressLabel" layoutX="750.0" layoutY="26.0" />
+            <Label layoutX="13.0" layoutY="46.0" text="Timer:" />
             <Label fx:id="timerLabel" layoutX="52.0" layoutY="45.0" />
          </children>
       </Pane>
@@ -59,7 +59,7 @@
    <bottom>
       <Pane prefHeight="12.0" prefWidth="550.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="489.0" layoutY="-5.0" text="Version 1.0" />
+            <Label layoutX="717.0" layoutY="-5.0" text="Version 1.0" />
          </children></Pane>
    </bottom>
 </BorderPane>

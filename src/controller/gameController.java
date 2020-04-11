@@ -161,7 +161,7 @@ public class gameController implements Initializable {
         stage.setTitle("CITIZENCANN - Score");
         root.getStylesheets().add(CSSDirection);
         stage.getIcons().add(new Image(imageURL));
-        stage.setScene(new Scene(root, 459, 251));
+        stage.setScene(new Scene(root, 500, 300));
         stage.setResizable(false);
         stage.show();
     }

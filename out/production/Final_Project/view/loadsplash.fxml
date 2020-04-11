@@ -13,6 +13,14 @@
          <StackPane.margin>
             <Insets />
          </StackPane.margin></ImageView>
+      <ImageView fitHeight="45.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/loading.gif" />
+         </image>
+         <StackPane.margin>
+            <Insets right="560.0" top="290.0" />
+         </StackPane.margin>
+      </ImageView>
       <ImageView fitHeight="74.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
       <StackPane.margin>
          <Insets right="-60.0" top="130.0" />

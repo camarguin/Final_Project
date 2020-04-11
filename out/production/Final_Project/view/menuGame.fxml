@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -8,16 +9,24 @@
    <left>
       <Pane prefHeight="360.0" prefWidth="565.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="questionLabel" layoutX="40" layoutY="45.0" style="-fx-font-family: Courier New;" text="How many questions do you like?">
+            <Label fx:id="questionLabel" layoutX="150.0" layoutY="58.0" style="-fx-font-family: Courier New;" text="How many questions?">
                <font>
                   <Font size="24" />
                </font>
             </Label>
-            <ChoiceBox fx:id="numQuestion" layoutX="170" layoutY="100.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
-            <Button fx:id="btnConfirmMenu" layoutX="200" layoutY="150.0" mnemonicParsing="false" onAction="#buttonClicked" text="Confirm" textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <ChoiceBox fx:id="numQuestion" layoutX="180.0" layoutY="107.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+            <Button fx:id="btnConfirmMenu" layoutX="230.0" layoutY="155.0" mnemonicParsing="false" onAction="#buttonClicked" text="Confirm" textAlignment="CENTER" BorderPane.alignment="CENTER">
 
             </Button>
-            <Label layoutX="73.0" layoutY="194.0" prefHeight="93.0" prefWidth="420.0" text="After clicking on Confirm, a timer will start and at the end, you will&#10;be able to see your response time and a summary of the&#10;performance of the test." textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="73.0" layoutY="203.0" prefHeight="93.0" prefWidth="420.0" text="After clicking on Confirm, a timer will start and at the end, you will be able to see your response time and a summary of the performance of the test." textAlignment="JUSTIFY" wrapText="true" />
+            <ImageView fx:id="infoIcon" fitHeight="24.0" fitWidth="24.0" layoutX="535.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/info2.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="58.0" layoutY="288.0" text="Free Study Book:" />
+            <Hyperlink fx:id="hyperLink" layoutX="54.0" layoutY="305.0" onAction="#hyperLinkClicked" text="Hyperlink" />
+            <Button fx:id="infoButton" layoutX="532.0" layoutY="2.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="30.0" onAction="#showInfo"/>
          </children>
       </Pane>
    </left>
