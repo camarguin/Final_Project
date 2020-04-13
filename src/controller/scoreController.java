@@ -43,15 +43,14 @@ public class scoreController implements Initializable {
         timerTextField.setText(timeTotalString());
         timerQuestionTextField.setText(String.format("%.2f seconds", calculateTime()));
         if (calculateScore() == 1.0) {
-            scoreLabel.setText("Great job! You are ready for the Test.");
+            scoreLabel.setText("Great job! You are ready for the Test");
         } else if (calculateScore() >= 0.7 && calculateScore() < 1.0) {
             scoreLabel.setText("Good Job! But not enough, Keep Practicing and you will be ready");
         } else if (calculateScore() >= 0.1 && calculateScore() < 0.6) {
-            scoreLabel.setText("Nice, study more to get better next time.");
+            scoreLabel.setText("You didn't do well. Study further and retake the test");
         } else {
-            scoreLabel.setText("You didn't do well. Study further and retake the test.");
+            scoreLabel.setText("Terrible Job! Study more to get better next time.");
         }
-
     }
 
     /**
@@ -83,6 +82,7 @@ public class scoreController implements Initializable {
         return score;
     }
     public void buttonClicked(ActionEvent actionEvent) {
+        gameController.score = 0;
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("../view/menuGame.fxml"));
@@ -95,7 +95,7 @@ public class scoreController implements Initializable {
         Stage stage = new Stage();
         stage.setTitle("CITIZENCANN");
         stage.getIcons().add(new Image(imageURL));
-        stage.setScene(new Scene(root, 500, 300));
+        stage.setScene(new Scene(root, 565, 360));
         stage.setResizable(false);
         stage.show();
         Stage stage1 = (Stage) retryButton.getScene().getWindow();
